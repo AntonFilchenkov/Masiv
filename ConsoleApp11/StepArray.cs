@@ -73,6 +73,7 @@ namespace ConsoleApp11
         }
         public override void Middle()
         {
+            Console.WriteLine("Среднее значение всего массива");
             int r = 0;
             int q = 0;
             for (int x = 0; x < array.Length; x++)
@@ -104,6 +105,7 @@ namespace ConsoleApp11
         }
         public void ReverseIndex()
         {
+            Console.WriteLine("Изменяем массив");
             for (int d = 0; d != array.Length; d++)
             {
                 for (int f = 0; f != array[d].Length; f++)

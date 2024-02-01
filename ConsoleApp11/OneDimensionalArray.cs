@@ -58,6 +58,7 @@ namespace ConsoleApp11
         }
         public override void Middle()
         {
+            Console.WriteLine("Среднее значение");
             int q = 0;
             foreach (int i in array)
             {
@@ -69,6 +70,7 @@ namespace ConsoleApp11
         }
         public void Minimal()
         {
+            Console.WriteLine("Если число меньше -100 и больше 100, то его удаляю");
             int[] ma = new int[array.Length];
             int r = 0;
             foreach (int i in array)
@@ -95,6 +97,7 @@ namespace ConsoleApp11
         }
         public void Delite()
         {
+            Console.WriteLine("Удаление повторения");
             int length = array.Length;
             for (int i = 0; i < array.Length; i++)
             {
@@ -125,12 +128,8 @@ namespace ConsoleApp11
             {
                 array[i] = newArray[i];
             }
-            // или newArray.CopyTo(array);
 
             Print();
-
-
-
         }
     }
 }

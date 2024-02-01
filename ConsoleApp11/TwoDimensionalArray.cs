@@ -68,6 +68,7 @@ namespace ConsoleApp11
         }
         public override void Middle()
         {
+            Console.WriteLine("Среднее значение");
             int r = 0;
             for (int x = 0; x < array.GetLength(0); x++)
             {
@@ -81,6 +82,7 @@ namespace ConsoleApp11
         }
         public void Reverse()
         {
+            Console.WriteLine("Если строка четная, то выводим с конца");
             int r = 0;
             for (int x = 0; x < array.GetLength(0); x++)
             {
