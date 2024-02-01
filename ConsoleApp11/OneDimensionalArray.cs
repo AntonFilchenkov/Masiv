@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 namespace ConsoleApp11
 {
     // Одномерный массив
-   sealed class OneDimensionalArray : Array
+    sealed class OneDimensionalArray : Array
     {
         private int[] array;
+
         public int[] Array { get => array; set => array = value; }
 
         // true - заполнение с клавиатуры,
@@ -56,6 +57,7 @@ namespace ConsoleApp11
             }
             Console.WriteLine();
         }
+
         public override void Middle()
         {
             Console.WriteLine("Среднее значение");
@@ -68,6 +70,7 @@ namespace ConsoleApp11
             Console.WriteLine(q);
 
         }
+
         public void Minimal()
         {
             Console.WriteLine("Если число меньше -100 и больше 100, то его удаляю");
@@ -93,8 +96,8 @@ namespace ConsoleApp11
                     Console.WriteLine(ma[i]);
                 }
             }
-
         }
+
         public void Delite()
         {
             Console.WriteLine("Удаление повторения");
@@ -110,9 +113,7 @@ namespace ConsoleApp11
                     }
                 }
             }
-
             int[] newArray = new int[length];
-
             for (int i = 0, j = 0; i < array.Length; i++)
             {
                 if (array[i] != int.MinValue)
@@ -121,14 +122,11 @@ namespace ConsoleApp11
                     j++;
                 }
             }
-
             array = new int[length];
-            
             for (int i = 0; i < newArray.Length; i++)
             {
                 array[i] = newArray[i];
             }
-
             Print();
         }
     }

@@ -11,6 +11,7 @@ namespace ConsoleApp11
         private int[][] array;
 
         public int[][] Array { get => array; set => array = value; }
+
         public StepArray(int[] columns, bool fillKeyboard = false)
         {
             array = new int[columns.Length][];
@@ -69,8 +70,8 @@ namespace ConsoleApp11
                 }
                 Console.WriteLine(" ");
             }
-
         }
+
         public override void Middle()
         {
             Console.WriteLine("Среднее значение всего массива");
@@ -86,6 +87,7 @@ namespace ConsoleApp11
             }
             Console.WriteLine(r / q);
         }
+
         public void MidleOne()
         {
             int r = 0;
@@ -103,6 +105,7 @@ namespace ConsoleApp11
                 r = 0;
             }
         }
+
         public void ReverseIndex()
         {
             Console.WriteLine("Изменяем массив");

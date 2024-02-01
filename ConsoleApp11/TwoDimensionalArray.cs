@@ -10,7 +10,9 @@ namespace ConsoleApp11
     sealed class TwoDimensionalArray : Array
     {
         private int[,] array;
+
         public int[,] Array { get => array; set => array = value; }
+
         public TwoDimensionalArray(int columns, int rows, bool fillKeyboard = false)
         {
             array = new int[rows, columns];
@@ -80,6 +82,7 @@ namespace ConsoleApp11
             int q = array.GetLength(0) * array.GetLength(1);
             Console.WriteLine(r / q);
         }
+
         public void Reverse()
         {
             Console.WriteLine("Если строка четная, то выводим с конца");
