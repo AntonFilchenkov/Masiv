@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp11
 {
     // Одномерный массив
-    class OneDimensionalArray
+   sealed class OneDimensionalArray : Array
     {
         private int[] array;
         public int[] Array { get => array; set => array = value; }
@@ -24,7 +24,7 @@ namespace ConsoleApp11
         }
 
         // Метод заполнения массива случайными числами
-        public void FillRandom()
+        public override void FillRandom()
         {
             Random random = new Random();
             for (int i = 0; i < array.Length; i++)
@@ -34,7 +34,7 @@ namespace ConsoleApp11
         }
 
         // Метод заполнения массива с клавиатуры
-        public void FillKeyboard()
+        public override void FillKeyboard()
         {
             Console.WriteLine("Ввод с клавиатуры:");
 
@@ -46,7 +46,7 @@ namespace ConsoleApp11
         }
 
         // Метод вывода массива на экран
-        public void Print()
+        public override void Print()
         {
             Console.WriteLine("Вывод массива:");
 
@@ -56,7 +56,7 @@ namespace ConsoleApp11
             }
             Console.WriteLine();
         }
-        public void Middle()
+        public override void Middle()
         {
             int q = 0;
             foreach (int i in array)
@@ -95,28 +95,40 @@ namespace ConsoleApp11
         }
         public void Delite()
         {
-            int[] x = new int[array.Length];
-            int r = 0;
-            for (int i = 0; i != array.Length; i++)
+            int length = array.Length;
+            for (int i = 0; i < array.Length; i++)
             {
-                int c = array[i];
-                for (int j = 0; j != array.Length; j++)
+                for (int j = 0; j < i; j++)
                 {
-                    if ((i != j) && (c == array[j]))
+                    if (array[i] == array[j])
                     {
-                        array[j] = 0;
+                        array[i] = int.MinValue;
+                        length--;
                     }
-                    x[r] = c;
                 }
-                r++;
             }
-            for (int a = 0; a != x.Length; a++)
+
+            int[] newArray = new int[length];
+
+            for (int i = 0, j = 0; i < array.Length; i++)
             {
-                if (x[a] != 0)
+                if (array[i] != int.MinValue)
                 {
-                    Console.Write(x[a] + " ");
+                    newArray[j] = array[i];
+                    j++;
                 }
             }
+
+            array = new int[length];
+            
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                array[i] = newArray[i];
+            }
+            // или newArray.CopyTo(array);
+
+            Print();
+
 
 
         }

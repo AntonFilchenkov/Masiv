@@ -1,0 +1,108 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp11
+{
+
+    sealed class TwoDimensionalArray : Array
+    {
+        private int[,] array;
+        public int[,] Array { get => array; set => array = value; }
+        public TwoDimensionalArray(int columns, int rows, bool fillKeyboard = false)
+        {
+            array = new int[rows, columns];
+
+            if (fillKeyboard == true)
+            {
+                FillKeyboard();
+            }
+            else FillRandom();
+        }
+
+        // Метод заполнения массива случайными числами
+        public override void FillRandom()
+        {
+            Random random = new Random();
+            for (int x = 0; x < array.GetLength(0); x++)
+            {
+                for (int y = 0; y < array.GetLength(1); y++)
+                {
+                    array[x, y] = random.Next(0, 10);
+                }
+            }
+        }
+
+        // Метод заполнения массива с клавиатуры
+        public override void FillKeyboard()
+        {
+            Console.WriteLine("Ввод с клавиатуры:");
+
+            for (int x = 0; x < array.GetLength(0); x++)
+            {
+                for (int y = 0; y < array.GetLength(1); y++)
+                {
+                    Console.Write($"[{x}, {y}] = ");
+                    array[x, y] = int.Parse(Console.ReadLine());
+                }
+            }
+
+        }
+
+        // Метод вывода массива на экран
+        public override void Print()
+        {
+            Console.WriteLine("Вывод массива:");
+
+            for (int x = 0; x < array.GetLength(0); x++)
+            {
+                for (int y = 0; y < array.GetLength(1); y++)
+                {
+                    Console.Write(array[x, y] + " ");
+                }
+                Console.WriteLine(" ");
+            }
+
+        }
+        public override void Middle()
+        {
+            int r = 0;
+            for (int x = 0; x < array.GetLength(0); x++)
+            {
+                for (int y = 0; y < array.GetLength(1); y++)
+                {
+                    r += array[x, y];
+                }
+            }
+            int q = array.GetLength(0) * array.GetLength(1);
+            Console.WriteLine(r / q);
+        }
+        public void Reverse()
+        {
+            int r = 0;
+            for (int x = 0; x < array.GetLength(0); x++)
+            {
+                if (x % 2 != 0)
+                {
+                    for (int y = 0; y < array.GetLength(1) / 2; y++)
+                    {
+                        r = array[x, y];
+                        array[x, y] = array[x, array.GetLength(1) - y - 1];
+                        array[x, array.GetLength(1) - y - 1] = r;
+                    }
+                }
+            }
+            for (int x = 0; x < array.GetLength(0); x++)
+            {
+                for (int y = 0; y < array.GetLength(1); y++)
+                {
+                    Console.Write(array[x, y] + " ");
+                }
+                Console.WriteLine(" ");
+            }
+
+        }
+    }
+}
